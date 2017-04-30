@@ -1,0 +1,82 @@
+.jumbotron {
+  margin: 0px auto;
+  padding: 20px 30px;
+  background: #ffffff;
+  color: floralwhite;
+
+}
+
+.navbar-light {
+  background: #ade382;
+  color: #ffffff;
+  border: 0px;
+}
+
+.navbar-nav > li > a{
+  color: #ffffff;
+}
+
+.navbar-light .navbar-nav > li > a:hover,
+.navbar-light .navbar-nav > li > a:focus
+{
+  color: #1c7b76;
+}
+
+.navbar-toggle:focus{
+  background-color: #b1b1b1;
+  border: 0px;
+}
+.navbar-toggle:hover{
+  background-color: #b1b1b1;
+  border: 0px;
+}
+
+.navbar-toggle .icon-bar {
+  background: #ffffff;
+}
+
+.carousel {
+  padding: 10px;
+  margin-bottom: 60px;
+}
+
+.main-container {
+
+}
+
+.thumbnail {
+  margin: 30px;
+  text-align: center;
+  background: #fef7f7;
+}
+
+.row-footer {
+  background-color: #fef7f7;
+  color:#1c7b76;
+}
+
+.media {
+  color: #1c7b76;
+  font-family: Serif;
+  font-style: italic;
+}
+
+.glyphicon-star {
+  color: #fb8000;
+  font-size: 28px;
+}
+
+.recipe-name {
+  margin: 30px;
+  color: #1c7b76;
+  font-family: Serif;
+  font-style: italic;
+}
+
+.recipe-detail {
+  color: #1c7b76;
+  font-family: Serif;
+
+}
+
+
