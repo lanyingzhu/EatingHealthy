@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="eatinghealthyApp">
 
 <head>
     <meta charset="utf-8">
@@ -8,13 +8,15 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head
          content must come *after* these tags -->
     <title>Eating Healthy</title>
-           <!-- Bootstrap -->
-<!-- build:css styles/main.css -->
+    <!-- Bootstrap -->
+
+    <!-- build:css styles/main.css -->
     <link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bower_components/bootstrap/dist/css/bootstrap-theme.min.css" rel="stylesheet">
     <link href="../bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="styles/bootstrap-social.css" rel="stylesheet">
     <link href="styles/mystyles.css" rel="stylesheet">
+    <!-- endbuild -->
 
 </head>
 
@@ -23,6 +25,7 @@
   <!-- Website infomation and the navigation -->
     <header class="jumbotron">
       <div class="row row-header">
+
         <div class="col-xs-4 col-md-5">
           <img src="images/wheat.png" height=68 width=120>
           <h1></h1>
@@ -46,10 +49,10 @@
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav">
-              <li class=""><a href="#">Home</a></li>
-              <li><a href="#">Asian</a></li>
-              <li><a href="#">Europe</a></li>
-              <li><a href="#">America</a></li>
+              <li class=""><a href="index.html">Home</a></li>
+              <li><a href="Asian.html">Asian</a></li>
+              <li><a href="Europe.html">Europe</a></li>
+              <li><a href="America.html">America</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
@@ -90,7 +93,7 @@
               <div class="col-xs-4 col-md-4"><img class="img-responsive"
                    src="images/salmon.jpeg" alt="Salmon"></div>
               <div class="col-xs-4 col-md-4"><img class="img-responsive"
-                   src="images/noodle.jpg" alt="Noodle"></div>
+                   src="images/noodle.jpeg" alt="Noodle"></div>
             </div>
           </div>
 
@@ -120,52 +123,20 @@
     </div>
 
     <div class="main-container">
-
-      <div class="row row-content">
+      <div class="row row-content" ng-controller="HomeController">
       <!-- recipes sample -->
-        <div class="col-xs-12 col-md-4 col-md-offset-1">
-          <div class="thumbnail">
-            <a href="images/Breakfast Grilled Cheese Tocas.jpg" target="_blank">
-              <img src="images/Breakfast Grilled Cheese Tocas.jpg" alt="Breakfast Grilled Cheese Tocas" style="width:80%">
-              <div class="caption">
-                <p style="color:#1c7b76">Breakfast Grilled Cheese Tocas.</p>
-              </div>
-            </a>
+        <div class="col-xs-12 col-md-4 col-md-offset-1"  ng-repeat="recipe in recipes | limitTo : 4">
+            <div class="thumbnail" >
+              <a href="detail.html" target="_blank">
+                <img ng-src="{{recipe.image}}" alt="{{recipe.name}}" style="width:75%">
+                <div class="caption">
+                  <p></p>
+                  <p style="color:#1c7b76">{{recipe.name}}</p>
+                </div>
+                <p>{{recipe.comment}}</p>
+              </a>
+            </div>
           </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 col-md-offset-1">
-          <div class="thumbnail">
-            <a href="images/asian-chicken-corn-and-noodle-soup.jpeg" target="_blank">
-              <img src="images/asian-chicken-corn-and-noodle-soup.jpeg" alt="Lights" style="width:80%">
-              <div class="caption">
-                <p style="color:#1c7b76">Asian-chicken-corn-and-noodle-soup</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 col-md-offset-1">
-          <div class="thumbnail">
-            <a href="images/pesto-salmon-and-italian-veggies-in-foil-step4-srgb.jpg" target="_blank">
-              <img src="images/pesto-salmon-and-italian-veggies-in-foil-step4-srgb.jpg" alt="pesto-salmon-and-italian-veggies-in-foil-step4-srgb" style="width:80%">
-              <div class="caption">
-                <p style="color:#1c7b76">Pesto salmon and veggies-in-foil</p>
-              </div>
-            </a>
-          </div>
-        </div>
-
-        <div class="col-xs-12 col-md-4 col-md-offset-1">
-          <div class="thumbnail">
-            <a href="images/Fruit bubble tea.jpg" target="_blank">
-              <img src="images/Fruit bubble tea.jpg" alt="Fruit bubble tea" style="width:80%">
-              <div class="caption">
-                <p style="color:#1c7b76">Fruit bubble tea</p>
-              </div>
-            </a>
-          </div>
-        </div>
 
       </div>
     </div>
@@ -180,17 +151,15 @@
 
     <!-- build:js scripts/main.js -->
     <script src="../bower_components/angular/angular.min.js"></script>
-    <script src="../bower_components/angular-route/angular-route.min.js"></script>
-    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
-    <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+    <!-- <script src="../bower_components/angular-route/angular-route.min.js"></script> -->
+    <!-- <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script> -->
+    <!-- <script src="../bower_components/angular-resource/angular-resource.min.js"></script> -->
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <script src="scripts/app.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js" ></script>
+    <script src="scripts/app.js"></script>
     <script src="scripts/controllers.js"></script>
     <script src="scripts/services.js"></script>
-
-
-<!-- endbuild -->
+    <!-- endbuild -->
 
 </body>
 
