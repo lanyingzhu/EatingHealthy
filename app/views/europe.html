@@ -1,0 +1,26 @@
+
+  <div class="container">
+
+    <div class="row row-content" ng-controller="MenuController">
+      <div class="col-xs-12 col-md-9 col-md-push-2">
+        <div class="media" ng-repeat="recipe in recipes | filter : 'Europe'">
+            <div class="media-left media-middle">
+                <a ui-sref="app.europe_id({id: recipe._id})">
+                <img class="media-object" style="width:150px"
+                 ng-src="{{recipe.image}}" alt="{{recipe.name}}">
+                </a>
+            </div>
+            <div class="media-body">
+                <h2 class="media-heading">{{recipe.name}}</h2>
+                <p>{{recipe.ingredients}}</p>
+                <p></p>
+                <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                <p><a class="btn btn-success btn-xs" href="#">More &raquo;</a></p>
+
+            </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+

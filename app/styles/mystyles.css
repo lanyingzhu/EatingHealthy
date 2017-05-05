@@ -68,6 +68,7 @@
 }
 
 .recipe-name {
+
   margin: 30px;
   color: #1c7b76;
   font-family: Serif;
@@ -77,6 +78,8 @@
 .recipe-detail {
   color: #1c7b76;
   font-family: Serif;
+  background: #fef7f7;
+  margin-bottom: 30px;
 
 }
 
