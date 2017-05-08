@@ -108,4 +108,4 @@ angular.module('eatinghealthyApp', ['ui.router'])
                 }
             });
             $urlRouterProvider.otherwise('/');
-    })
+    });
