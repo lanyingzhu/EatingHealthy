@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('eatinghealthyApp', ['ui.router'])
+angular.module('eatinghealthyApp', ['ui.router', 'ngResource'])
   .config(function($stateProvider, $urlRouterProvider) {
         $stateProvider
                     // route for the home page

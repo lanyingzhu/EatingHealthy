@@ -6,34 +6,32 @@ angular.module('eatinghealthyApp')
           $scope.message = "Loading ...";
           $scope.recipes = {};
 
-          homeFactory.getRecipes()
-            .then(
-              function (response) {
-                $scope.recipes = response.data;
-                $scope.showRecipe = true;
-              },
-              function (response) {
+          $scope.recipes = homeFactory.getRecipes().query(
+            function(response) {
+              $scope.recipes = response;
+              $scope.showRecipe = true;
+            },
+            function(response) {
                 $scope.message = "Error: "+response.status + " " + response.statusText;
-              }
-            );
+
+            });
 
       }])
 
       .controller('RecipeDetailController', ['$scope', '$stateParams', 'homeFactory', function ($scope, $stateParams, homeFactory) {
-            $scope.showRecipe = false;
+            $scope.showRecipe = true;
             $scope.message = "Loading ...";
             $scope.recipe = {};
 
-            homeFactory.getRecipe(parseInt($stateParams.id,10))
-            .then(
-                function (response) {
-                  $scope.recipe = response.data;
-                  $scope.showRecipe = true;
-
-                },
-                function (response) {
-                  $scope.message = "Error: "+response.status + " " + response.statusText;
-                }
+            $scope.recipe = homeFactory.getRecipes().get({id:parseInt($stateParams.id,10)})
+              .$promise.then(
+                  function(response){
+                      $scope.recipe = response;
+                      $scope.showRecipe = true;
+                  },
+                  function(response) {
+                      $scope.message = "Error: "+response.status + " " + response.statusText;
+                  }
             );
 
       }]);

@@ -2,17 +2,11 @@
 
 angular.module('eatinghealthyApp')
         .constant("baseURL", "http://localhost:3000/")
-        .service('homeFactory', ['$http', 'baseURL', function ($http,baseURL) {
+        .service('homeFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
           this.getRecipes = function () {
 
-            return $http.get(baseURL + "recipes");
+            return $resource(baseURL + "recipes/:id", null, {'update':{method:'PUT'}});
 
           };
-
-          this.getRecipe = function (index) {
-
-            return $http.get(baseURL + "recipes/" + index);
-          };
-
         }]);
