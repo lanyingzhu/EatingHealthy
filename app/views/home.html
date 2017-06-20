@@ -9,7 +9,7 @@
       <div ng-if="showRecipe">
         <div class="col-xs-12 col-md-4 col-md-offset-1"  ng-repeat="recipe in recipes | limitTo : 4">
             <div class="thumbnail" >
-              <a ui-sref="app_id({id: recipe.id})">
+              <a ui-sref="app_id({id: recipe._id})">
                 <img ng-src="{{recipe.image}}" alt="{{recipe.name}}" style="width:75%">
                 <div class="caption">
                   <p></p>

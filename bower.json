@@ -15,11 +15,13 @@
     "tests"
   ],
   "dependencies": {
+    "angular": "^1.6.4",
+    "angular-ui-router": "^1.0.1",
+    "angular-resource": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "angular-mocks": "~1.5.5",
     "bootstrap": "^3.3.7",
     "font-awesome": "^4.7.0",
-    "angular": "^1.6.4",
-    "angular-route": "^1.6.4",
-    "angular-ui-router": "^1.0.1",
-    "angular-resource": "^1.6.4"
+    "ng-dialog": "^1.1.0"
   }
 }

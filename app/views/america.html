@@ -8,7 +8,7 @@
         <div class="col-xs-12 col-md-9 col-md-push-2"  ng-if="showRecipe">
             <div class="media"  ng-repeat="recipe in recipes | filter : 'America'">
                 <div class="media-left media-middle">
-                    <a ui-sref="app.america_id({id: recipe.id})">
+                    <a ui-sref="app.america_id({id: recipe._id})">
                     <img class="media-object" style="width:150px"
                      ng-src="{{recipe.image}}" alt="{{recipe.name}}">
                     </a>
@@ -18,7 +18,7 @@
                     <p>{{recipe.igredients}}</p>
                     <p></p>
                     <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                    <p><a class="btn btn-success btn-xs" ng-href="#">More &raquo;</a></p>
+                    <p><a class="btn btn-success btn-xs" ui-sref="app.america_id({id:recipe._id})">More &raquo;</a></p>
 
                 </div>
             </div>

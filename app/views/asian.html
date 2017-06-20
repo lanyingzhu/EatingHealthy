@@ -8,7 +8,7 @@
       <div class="col-xs-12 col-md-9 col-md-push-2"  ng-if="showRecipe">
         <div class="media" ng-repeat="recipe in recipes | filter : 'Asianfood'">
             <div class="media-left media-middle">
-                <a ui-sref="app.asian_id({id:recipe.id})">
+                <a ui-sref="app.asian_id({id:recipe._id})">
                 <img class="media-object" style="width:150px"
                  ng-src="{{recipe.image}}" alt="{{recipe.name}}">
                 </a>
@@ -16,9 +16,9 @@
             <div class="media-body">
                 <h2 class="media-heading">{{recipe.name}}</h2>
                 <p>{{recipe.ingredients}}</p>
-                <p></p>
+                <p style="pedding:20px"></p>
                 <span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
-                <p><a class="btn btn-success btn-xs" ui-sref="app.recipedetail">More &raquo;</a></p>
+                <p><a class="btn btn-success btn-xs" ui-sref="app.asian_id({id:recipe._id})">More &raquo;</a></p>
             </div>
         </div>
       </div>

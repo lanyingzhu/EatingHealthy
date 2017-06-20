@@ -26,29 +26,92 @@
           <div class="col-xs-6 col-md-6">
             <section class="">
               <h3>Ingredients</h3>
-              <p>{{recipe.ingredients}}</p>
-              <!-- <ul>
-                <li>2 * 72g pkts Maggi</li>
-                <li>2 tablespoons soy sauce</li>
-                <li>5cm-piec ginger, peeled, cut into matchsticks</li>
-                <li>2 spring onions, thinly sliced diagonally Lime wedges, to serve</li>
-              </ul> -->
+              <ul ng-repeat="ingredient in recipe.ingredient">
+                <li>{{ingredient}}</li>
+              </ul>
             </section>
           </div>
           <div class="col-xs-6 col-md-6">
             <section>
               <h3>Directions</h3>
-              <p>{{recipe.directions}}</p>
-              <!--<ul>
-                <li>Step 1: Combine the two favour sachets.....</li>
-                <li>Step 2: Add the noodles to the soup mixture. Simmer, uncovered, for  1 min.</li>
-                <li>Step 3: Add the choy sum.....</li>
-                <li>Step 4: Ladie the soup into serving bowls....</li>
-                <li>Step 5:</li>
-                 <li>Step 6:</li>
-              </ul> -->
+              <ul ng-repeat="direction in recipe.direction">
+                <li>{{direction}}</li>
+              </ul>
             </section>
           </div>
         </div>
       </div>
-    </div>
+
+      <div class="comment-content">
+
+          <div class="col-xs-9 col-xs-offset-1">
+            <ul class=list-inline>
+                <li><h4>Customer Comments </h4></li>
+                <li></li>
+                <li>Sort by:</li>
+                <li><input type="text" ng-model="orderText"></li>
+            </ul>
+
+            <blockquote ng-repeat="comment in recipe.comments | orderBy:orderText">
+                <p>{{comment.rating}} stars</p>
+                <p>{{comment.comment}}</p>
+                <footer>{{comment.author}}, {{comment.updatedAt | date}}</footer>
+            </blockquote>
+          </div>
+          <div class="col-xs-9 col-xs-offset-1" ng-if="authed">
+            <ul class="list-unstyled">
+                <!--Here  include the code to show the live preview of the comment-->
+                <blockquote ng-show="commentForm.$valid && !commentForm.yourcomment.$pristine">
+                    <p>{{mycomment.rating}} stars</p>
+                    <p>{{mycomment.comment}}</p>
+                    <footer>{{mycomment.author}}, {{mycomment.date | date}}</footer>
+                </blockquote>
+            </ul>
+            <!--Here is Comment Form-->
+            <form class="form-horizontal" role="form" name="commentForm"
+                ng-submit="submitComment()" novalidate >
+
+                <!-- <div class="form-group" ng-class="{ 'has-error' : commentForm.yourname.$error.required && !commentForm.yourname.$pristine }">
+                    <label for="yourname" class="col-sm-2 control-label">Your Name</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" id="yourname" name="yourname" ng-model="mycomment.author" required>
+                        <span ng-show="commentForm.yourname.$error.required && !commentForm.yourname.$pristine" class="help-block">Your name is required.</span>
+                    </div>
+                </div> -->
+                <div class="form-group">
+                    <label for="starnumber" class="col-sm-2 control-label" ng-model="mycomment.rating">Number of Stars</label>
+                    <div class="col-sm-10">
+                        <label class="radio-inline">
+                            <input type="radio" value="1" id="starnumber" ng-model="mycomment.rating">1
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" value="2" id="starnumber" ng-model="mycomment.rating">2
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" value="3" id="starnumber" ng-model="mycomment.rating">3
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" value="4" id="starnumber" ng-model="mycomment.rating">4
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" value="5" id="starnumber" ng-model="mycomment.rating">5
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group" ng-class="{ 'has-error' : commentForm.yourcomment.$error.required && !commentForm.yourcomment.$pristine }">
+                    <label for="yourcomment" class="col-sm-2 control-label">Your Feedback</label>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" id="yourcomment" name="yourcomment" rows="12" ng-model="mycomment.comment" required></textarea>
+                        <span ng-show="commentForm.yourcomment.$error.required && !commentForm.yourcomment.$pristine" class="help-block">Your comments are required.</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-success" ng-disabled="commentForm.$invalid" ng-click="submitComment()">Submit Comments</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+      </div>
+
+
