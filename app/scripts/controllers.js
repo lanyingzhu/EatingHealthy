@@ -6,13 +6,13 @@ angular.module('eatinghealthyApp')
           $scope.message = "Loading ...";
           $scope.recipes = {};
 
-          $scope.recipes = homeFactory.getRecipes().query(
+          homeFactory.getRecipes().query(
             function(response) {
               $scope.recipes = response;
               $scope.showRecipe = true;
             },
             function(response) {
-                $scope.message = "Error: "+response.status + " " + response.statusText;
+              $scope.message = "Error: "+response.status + " " + response.statusText;
 
             });
 

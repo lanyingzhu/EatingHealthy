@@ -6,8 +6,7 @@ angular.module('eatinghealthyApp')
 
           this.getRecipes = function () {
 
-            return $resource(baseURL + "recipes/:id", null, {'update':{method:'PUT'}});
-
+            return $resource(baseURL + "recipes/:id", null,{'update':{method:'PUT'}});
           };
         }])
 
