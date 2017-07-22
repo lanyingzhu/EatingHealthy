@@ -55,22 +55,23 @@ angular.module('eatinghealthyApp')
             };
 
             $scope.submitComment = function () {
-                console.log("my comment");
                 console.log($scope.mycomment);
-                console.log($scope.username);
                 $scope.mycomment.author = $scope.username;
-                commentFactory.save({id: $stateParams.id}, $scope.mycomment);
-                console.log("my comment");
-                console.log($scope.mycomment);
+                commentFactory.save({id: $stateParams.id}, $scope.mycomment, function(resp) {
+                    if (resp.ok) {
+                        $scope.recipe.comments.push($scope.mycomment);
+                    }
+                });
 
                 $state.go($state.current, {}, {reload: true});
 
-                // $scope.commentForm.$setPristine();
-
+                //$scope.commentForm.$setPristine();
+                /*
                 $scope.mycomment = {
                     rating: 5,
                     comment: ""
                 };
+                */
             };
 
       }])
@@ -120,9 +121,7 @@ angular.module('eatinghealthyApp')
                    $localStorage.storeObject('userinfo',$scope.loginData);
 
                 AuthFactory.login($scope.loginData);
-
                 ngDialog.close();
-
             };
 
             $scope.openRegister = function () {

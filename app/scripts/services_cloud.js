@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('eatinghealthyApp')
-        .constant("baseURL", "https://eatinghealthyrest-akin-gamb.mybluemix.net/")
+        //.constant("baseURL", "https://eatinghealthyrest-akin-gamb.mybluemix.net/")
+        .constant("baseURL", "http://localhost:3000/")
         .service('homeFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
           this.getRecipes = function () {
@@ -16,7 +17,6 @@ angular.module('eatinghealthyApp')
                                           return angular.fromJson(data);
                                         },
                                         isArray:false},
-                               'update':{method:'PUT'},
                              });
           };
         }])
@@ -103,7 +103,7 @@ angular.module('eatinghealthyApp')
                         <div class="ngdialog-message">\
                         <div><h3>Login Unsuccessful</h3></div>' +
                           '<div><p>' +  response.data.err.message + '</p><p>' +
-                            response.data.err.name + '</p></div>' +
+                           '<b>' + response.data.err.name + '</b></p></div>' +
                         '<div class="ngdialog-buttons">\
                             <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click=confirm("OK")>OK</button>\
                         </div>'
@@ -139,8 +139,7 @@ angular.module('eatinghealthyApp')
                       var message = '\
                         <div class="ngdialog-message">\
                         <div><h3>Registration Unsuccessful</h3></div>' +
-                          '<div><p>' +  response.data.err.message +
-                          '</p><p>' + response.data.err.name + '</p></div>';
+                          '<div><p>' +  response.data.err.message + '</p></div>';
 
                         ngDialog.openConfirm({ template: message, plain: 'true'});
 
