@@ -22,7 +22,7 @@ angular.module('eatinghealthyApp')
 
       }])
 
-      .controller('RecipeDetailController', ['$scope', '$state', '$stateParams', 'homeFactory', 'commentFactory', 'AuthFactory', function ($scope, $state, $stateParams, homeFactory, commentFactory, AuthFactory) {
+      .controller('RecipeDetailController', ['$scope', '$state', '$rootScope', '$stateParams', 'homeFactory', 'commentFactory', 'AuthFactory', function ($scope, $state, $rootScope, $stateParams, homeFactory, commentFactory, AuthFactory) {
             $scope.showRecipe = true;
             $scope.message = "Loading ...";
             $scope.recipe = {};
@@ -73,7 +73,19 @@ angular.module('eatinghealthyApp')
                 };
                 */
             };
+            $rootScope.$on('login:Successful', function () {
+                $scope.authed = AuthFactory.isAuthenticated();
+                $scope.username = AuthFactory.getUsername();
+            });
 
+            $rootScope.$on('registration:Successful', function () {
+                $scope.authed = AuthFactory.isAuthenticated();
+                $scope.username = AuthFactory.getUsername();
+            });
+            
+            $rootScope.$on('logout:Successful', function () {
+                $scope.authed = false;
+            });
       }])
 
       .controller('HeaderController', ['$scope', '$state', '$rootScope', 'ngDialog', 'AuthFactory', function ($scope, $state, $rootScope, ngDialog, AuthFactory) {
@@ -94,6 +106,7 @@ angular.module('eatinghealthyApp')
                 AuthFactory.logout();
                 $scope.loggedIn = false;
                 $scope.username = '';
+                $rootScope.$broadcast("logout:Successful");
             };
 
             $rootScope.$on('login:Successful', function () {
