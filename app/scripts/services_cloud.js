@@ -91,7 +91,7 @@ angular.module('eatinghealthyApp')
             authFac.login = function(loginData) {
 
                 $resource(baseURL + "users/login")
-                .save(loginData,
+                .get(loginData,
                    function(response) {
                       storeUserCredentials({username:loginData.username, token: response.token});
                       $rootScope.$broadcast('login:Successful');
@@ -124,7 +124,7 @@ angular.module('eatinghealthyApp')
             authFac.register = function(registerData) {
 
                 $resource(baseURL + "users/register")
-                .save(registerData,
+                .get(registerData,
                    function(response) {
                       authFac.login({username:registerData.username, password:registerData.password});
                     if (registerData.rememberMe) {
