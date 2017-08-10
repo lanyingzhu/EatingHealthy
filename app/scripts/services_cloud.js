@@ -2,7 +2,7 @@
 
 angular.module('eatinghealthyApp')
         .constant("baseURL", "https://eatinghealthyrest-akin-gamb.mybluemix.net/")
-        //.constant("baseURL", "http://localhost:3000/")
+        // .constant("baseURL", "http://localhost:3000/")
         .service('homeFactory', ['$resource', 'baseURL', function ($resource, baseURL) {
 
           this.getRecipes = function () {
